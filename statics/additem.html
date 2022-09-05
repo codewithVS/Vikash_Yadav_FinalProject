@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Home</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/themify/themify-icons.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/elegant-font/html-css/style.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/lightbox2/css/lightbox.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="js/subtype.js"></script>
+
+
+
+
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		
+			}
+
+
+
+      $(function() {
+
+         $("#fname_error_message").hide();
+		 $("#vfname_error_message").hide();
+         $("#sname_error_message").hide();
+         $("#mobile_error_message").hide();
+         $("#email_error_message").hide();
+         $("#password_error_message").hide();
+         $("#retype_password_error_message").hide();
+
+         var error_fname = false;
+		 var error_vfname = false;
+         var error_sname = false;
+         var error_mobile = false;
+         var error_email = false;
+         var error_password = false;
+         var error_retype_password = false;
+
+         $("#form_fname").focusout(function(){
+            check_fname();
+         });
+		 $("#form_vfname").focusout(function(){
+            check_vfname();
+         });
+         $("#form_sname").focusout(function() {
+            check_sname();
+         });
+         $("#form_mobile").focusout(function() {
+            check_mobile();
+         });
+         $("#form_email").focusout(function() {
+            check_email();
+         });
+         $("#form_password").focusout(function() {
+            check_password();
+         });
+         $("#form_retype_password").focusout(function() {
+            check_retype_password();
+         });
+         
+
+         function check_fname() {
+            var pattern = /^[a-zA-Z]*$/;
+			var vvpattern = /^[0-9]*$/;
+            var fname = $("#form_fname").val();
+            if (pattern.test(fname) && fname !== '') {
+               $("#fname_error_message").hide();
+               $("#form_fname").css("border-bottom","2px solid #34F458");
+            } else {
+               $("#fname_error_message").html("Should contain only Characters");
+               $("#fname_error_message").show();
+               $("#form_fname").css("border-bottom","2px solid #F90A0A");
+               error_fname = true;
+            }
+         }
+
+
+		 function check_vfname() {
+            var pattern = /^[a-zA-Z]*$/;
+			var vvpattern = /^[0-9]*$/;
+            var fname = $("#form_vfname").val();
+            if (vvpattern.test(fname) && fname !== '') {
+               $("#vfname_error_message").hide();
+               $("#form_vfname").css("border-bottom","2px solid #34F458");
+            } else {
+               $("#vfname_error_message").html("Should contain only Numbers");
+               $("#vfname_error_message").show();
+               $("#vform_fname").css("border-bottom","2px solid #F90A0A");
+               error_fname = true;
+            }
+         }
+
+         function check_sname() {
+            var pattern = /^[a-zA-Z]*$/;
+            var sname = $("#form_sname").val()
+            if (pattern.test(sname) && sname !== '') {
+               $("#sname_error_message").hide();
+               $("#form_sname").css("border-bottom","2px solid #34F458");
+            } else {
+               $("#sname_error_message").html("Should contain only Characters");
+               $("#sname_error_message").show();
+               $("#form_sname").css("border-bottom","2px solid #F90A0A");
+               error_fname = true;
+            }
+         }
+
+         function check_password() {
+            var password_length = $("#form_password").val().length;
+            if (password_length < 8) {
+               $("#password_error_message").html("Atleast 8 Characters");
+               $("#password_error_message").show();
+               $("#form_password").css("border-bottom","2px solid #F90A0A");
+               error_password = true;
+            } else {
+               $("#password_error_message").hide();
+               $("#form_password").css("border-bottom","2px solid #34F458");
+            }
+         }
+
+         function check_retype_password() {
+            var password = $("#form_password").val();
+            var retype_password = $("#form_retype_password").val();
+            if (password !== retype_password) {
+               $("#retype_password_error_message").html("Passwords Did not Matched");
+               $("#retype_password_error_message").show();
+               $("#form_retype_password").css("border-bottom","2px solid #F90A0A");
+               error_retype_password = true;
+            } else {
+               $("#retype_password_error_message").hide();
+               $("#form_retype_password").css("border-bottom","2px solid #34F458");
+            }
+         }
+
+         function check_mobile() {
+            var pattern = /^\d{10}$/;;
+            var mobile = $("#form_mobile").val();
+            if (pattern.test(mobile) && mobile !== '') {
+               $("#mobile_error_message").hide();
+               $("#form_mobile").css("border-bottom","2px solid #34F458");
+            } else {
+               $("#mobile_error_message").html("Invalid Mobile no.");
+               $("#mobile_error_message").show();
+               $("#form_mobile").css("border-bottom","2px solid #F90A0A");
+               error_mobile = true;
+            }
+         }
+
+         function check_email() {
+            var pattern = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            var email = $("#form_email").val();
+            if (pattern.test(email) && email !== '') {
+               $("#email_error_message").hide();
+               $("#form_email").css("border-bottom","2px solid #34F458");
+            } else {
+               $("#email_error_message").html("Invalid Email");
+               $("#email_error_message").show();
+               $("#form_email").css("border-bottom","2px solid #F90A0A");
+               error_email = true;
+            }
+         }
+
+
+         $("#registration_form").submit(function() {
+            error_fname = false;
+			error_vfname = false;
+            error_sname = false;
+            error_mobile=false;
+            error_email = false;
+            error_password = false;
+            error_retype_password = false;
+            
+
+            check_fname();
+			check_vfname();
+            check_sname();
+            check_mobile();
+            check_email();
+            check_password();
+            check_retype_password();
+            
+
+            if (error_fname === false && error_vfname === false && error_sname === false && error_email === false && error_password === false && error_retype_password === false &&error_mobile === false) {
+               alert("Registration Successfull");
+               return true;
+            } else {
+               alert("Please Fill the form Correctly");
+               return false;
+            }
+
+
+         });
+      });
+   
+
+
+
+
+
+
+
+
+
+
+
+
+		
+function validateForm() {
+  let x = document.forms["vsform"]["lastName"].value;
+  if (x == "") {
+    alert("Last Name must be filled out");
+    document.forms["vsform"]["lastName"].focus();
+    return false;
+  }
+    var letters = /^[A-Za-z0-9]+$/;
+   if(x.value.match(letters))
+     {
+      return true;
+     }
+   else
+     {
+     alert("message");
+     return false;
+     }
+
+ let pass = document.forms["vsform"]["password"].value;
+  let cpass = document.forms["vsform"]["cpassword"].value;
+
+  if (pass == "") {
+    alert("Password Must be Filled ");
+    document.forms["vsform"]["password"].focus();
+    return false;}
+
+  if (pass.length<8){
+  	alert("Minimum length password : 8");
+  	return false;
+  }
+  if (pass!=cpass){
+  	alert("Password not Matched")
+  	document.forms["vsform"]["password"].focus();
+  	document.forms["vsform"]["cpassword"].focus();
+  	return false;
+  }
+
+let mno = document.forms["vsform"]["mnumber"].value;
+  					var phoneno = /^\d{10}$/;
+  				if(mno.match(phoneno))
+       			 {
+      				return validatemail();
+        				}
+      			else
+        			{
+        			alert("Invalid Mobile no.");
+        			document.forms["vsform"]["mnumber"].focus();
+        			return false;
+        					}
+
+        					
+
+
+
+function validatemail(){
+let mail= document.forms["vsform"]["email"].value;
+var mailformat =/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+if(mail.match(mailformat))
+{
+	let pincode = document.forms["vsform"]["pcode"].value;
+  					var pincodef = /^\d{6}$/;
+  				if(pincode.match(pincodef))
+       			 {
+      
+        				}
+      			else
+        			{
+        			alert("Invalid Pin Code");
+        			document.forms["vsform"]["pcode"].focus();
+        			return false;
+        					}
+
+}
+else
+{
+alert("You have entered an invalid email address!"); 
+document.forms["vsform"]["email"].focus();  
+
+return false;
+}}
+
+
+
+
+
+
+
+				}
+
+	</script>
+	<!-- //meta-tags -->
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- font-awesome -->
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<!-- fonts -->
+	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+	    rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+</head>
+<body >
+	
+	<!-- Header -->
+	<header class="header1">
+		<!-- Header desktop -->
+		<div class="container-menu-header">
+			<div class="topbar">
+				<div class="topbar-social">
+					<a href="#" class="topbar-social-item fa fa-facebook"></a>
+					<a href="#" class="topbar-social-item fa fa-instagram"></a>
+					<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+					<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+					<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+				</div>
+
+				<span class="topbar-child1">
+					Free shipping for standard order over $100
+				</span>
+
+				<div class="topbar-child2">
+					<span class="topbar-email">
+						mybadmintonworld@example.com
+					</span>
+
+					<div class="topbar-language rs1-select2">
+						<select class="selection-1" name="time">
+							<option>USD</option>
+							<option>EUR</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="wrap_header">
+				<!-- Logo -->
+				<a href="index" class="logo">
+					<img src="images/icons/logo.png" alt="IMG-LOGO">
+				</a>
+
+				<!-- Menu -->
+				<div class="wrap_menu" style="margin-left: 20px">
+					<nav class="menu">
+						<ul class="main_menu">
+
+							<li>
+								<a href="/index"><b>BADMINTON</b></a>
+								<ul class="sub_menu multi-column columns-3" style="width: 900px;background-color: white  ">
+
+								<div class="row" >
+				            <div class="col-sm-2" style="color: red">
+					            <ul class="multi-column-dropdown ">
+						            <li><a href="/Rackets"><b>Rackets</b></a></li>
+						            <li><a href="/RacketsAttacking" class="text-gray-80 hover:text-primary-accent">Attacking</a></li>
+						            <li><a href="/RacketsDefensive">Defensive</a></li>
+						            <li><a href="/RacketsBalanced">Balanced</a></li>
+
+						            
+					            </ul>
+				            </div>
+				            <div class="col-sm-2">
+					            <ul class="multi-column-dropdown">
+						            <li><a href="/Shoes"><b>Shoes</b></a></li>
+						       		<li><a href="/ShoesProfessionals">Professionals</a></li>
+						            <li><a href="/ShoesIntermediate">Intermediate</a></li>
+						            <li><a href="/ShoesBeginner">Beginner</a></li>
+						        </ul>
+				            </div>
+				            <div class="col-sm-2">
+					            <ul class="multi-column-dropdown">
+						            <li><a href="/Shuttle"><b>Shuttle</b></a></li>
+						       		<li><a href="/ShuttleNylon">Nylon</a></li>
+						            <li><a href="/ShuttleFeather">Feather</a></li>
+		
+						        </ul>
+				            </div>
+				            <div class="col-sm-2">
+					            <ul class="multi-column-dropdown">
+						            <li><a href="/Grips"><b>Grips</b></a></li>
+						       		<li><a href="/Grip">Grip</a></li>
+						            <li><a href="/Over Grip">Over Grip</a></li>
+		
+						        </ul>
+				            </div>
+				            <div class="col-sm-2">
+					            <ul class="multi-column-dropdown">
+						            <li><a href="/Strings"><b>Strings</b></a></li>
+						       		<li><a href="/StringsPower">Power</a></li>
+						            <li><a href="/StringsDurability">Durability</a></li>
+						            <li><a href="/StringsBalanced">Balanced</a></li>
+		
+						        </ul>
+				            </div>
+				            <div class="col-sm-2">
+					            <ul class="multi-column-dropdown">
+						            <li><a href="/Others"><b>Others</b></a></li>
+						       		<li><a href="/Clothing">Clothing</a></li>
+						            <li><a href="/Bags">Bags</a></li>
+						            <li><a href="/Accessories">Accessories</a></li>
+		
+						        </ul>
+				            </div>
+				           
+			            </div>	
+								</ul>
+							</li>
+
+
+							<li>
+								<a href="/Brand" disabled><b>BRANDS</b></a>
+								<ul class="sub_menu multi-column columns-3" style="width: 140px;background-color: white  ">
+
+								<div class="row" >
+				            <div class="col-sm-2" style="color: red">
+					            <ul class="multi-column-dropdown ">
+						            <li><a href="/Yonex">Yonex</a></li>
+						            <li><a href="/Lining">Lining</a></li>
+						            <li><a href="/Ashaway">Ashaway</a></li>
+						            <li><a href="/Asics">Asics</a></li>
+						            <li><a href="/Carlton">Carlton</a></li>
+
+						            
+					            </ul>
+				            </div>
+				 				</div>	
+								</ul>
+							</li>
+
+							<li >
+								<a href="/totalitems"><b>SHOP</b></a>
+							</li>
+
+
+							<li>
+								<a href="/blog"><b>BLOG</b></a>
+							</li>
+
+							<li>
+								<a href="/about"><b>ABOUT</b></a>
+							</li>
+
+							<li>
+								<a href="/contact"><b>CONTACT</b></a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+
+				<!-- Header Icon -->
+				<div class="header-icons">
+
+ <!--<div class="search-input-wrapper">
+      <div class="search-input">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." style="margin-top: -140px;margin-right: -70px">
+
+<ul id="myUL" style="margin-right: -130px;margin-top: 10px" >
+  <li><a href="#">Adele</a></li>
+  <li><a href="#">Agnes</a></li>
+
+  <li><a href="#">Billy</a></li>
+  <li><a href="#">Bob</a></li>
+
+  <li><a href="#">Calvin</a></li>
+  <li><a href="#">Christina</a></li>
+  <li><a href="#">Cindy</a></li>
+</ul>
+        <i class="  fa fa-times" style="margin-top: -20px"></i>
+      </div>
+    </div>
+    <div class="search-icon">
+      <i class=" fa fa-search"></i>
+
+    </div>
+					<span class="linedivide1"></span> -->
+
+
+			
+						
+						<% if(name!==null){ %>
+							<button type="button" onclick="location.href = 'http://localhost/index1';" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal1">
+								Logout
+							  </button>
+							  <button type="button" onclick="location.href = 'http://localhost/Account';" class="btn btn-outline-dark" data-toggle="modal" style="margin-left: 5px;" data-target="#myModal1">
+								Account 
+							  </button>
+						  <% } else {%>  
+							<a href="/login" class="header-wrapicon1 dis-block">
+								<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+							</a>					
+							<% }%>
+						<!-- <button class="btn  btn-secondary" onclick="location.href = 'http://localhost/login';" style="background-color: rgb(112, 111, 108); color: whitesmoke;" type="button">Logout</button> -->
+					
+					  <!-- <button class="btn  btn-secondary" onclick="location.href = 'http://localhost/login';" style="background-color: rgb(112, 111, 108); color: whitesmoke;" type="button">LogIn</button> -->
+				
+
+
+					<span class="linedivide1"></span>
+					<button onclick="location.href='http://localhost/cart'" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal1">
+						cart
+					  </button>
+					<div class="header-wrapicon2">
+						
+						<!-- <a href="/cart.html" data-toggle="modal" data-target="#myModal1">
+						</a>  -->
+						
+
+						<!-- Header cart noti -->
+					
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Header Mobile -->
+		<div class="wrap_header_mobile">
+			<!-- Logo moblie -->
+			<a href="/index" class="logo-mobile">
+				<img src="images/icons/logo.png" alt="IMG-LOGO">
+			</a>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu">
+				<!-- Header Icon mobile -->
+				<div class="header-icons-mobile">
+					<a href="#" class="header-wrapicon1 dis-block">
+						<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+					</a>
+
+					<span class="linedivide2"></span>
+
+					<div class="header-wrapicon2">
+						<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+						<span class="header-icons-noti">0</span>
+
+						<!-- Header cart noti -->
+						<div class="header-cart header-dropdown">
+							<ul class="header-cart-wrapitem">
+								<li class="header-cart-item">
+									<div class="header-cart-item-img">
+										<img src="images/item-cart-01.jpg" alt="IMG">
+									</div>
+
+									<div class="header-cart-item-txt">
+										<a href="#" class="header-cart-item-name">
+											White Shirt With Pleat Detail Back
+										</a>
+
+										<span class="header-cart-item-info">
+											1 x $19.00
+										</span>
+									</div>
+								</li>
+
+								<li class="header-cart-item">
+									<div class="header-cart-item-img">
+										<img src="images/item-cart-02.jpg" alt="IMG">
+									</div>
+
+									<div class="header-cart-item-txt">
+										<a href="#" class="header-cart-item-name">
+											Converse All Star Hi Black Canvas
+										</a>
+
+										<span class="header-cart-item-info">
+											1 x $39.00
+										</span>
+									</div>
+								</li>
+
+								<li class="header-cart-item">
+									<div class="header-cart-item-img">
+										<img src="images/item-cart-03.jpg" alt="IMG">
+									</div>
+
+									<div class="header-cart-item-txt">
+										<a href="#" class="header-cart-item-name">
+											Nixon Porter Leather Watch In Tan
+										</a>
+
+										<span class="header-cart-item-info">
+											1 x $17.00
+										</span>
+									</div>
+								</li>
+							</ul>
+
+							<div class="header-cart-total">
+								Total: $75.00
+							</div>
+
+							<div class="header-cart-buttons">
+								<div class="header-cart-wrapbtn">
+									<!-- Button -->
+									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+										View Cart
+									</a>
+								</div>
+
+								<div class="header-cart-wrapbtn">
+									<!-- Button -->
+									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+										Check Out
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Menu Mobile -->
+		<div class="wrap-side-menu" >
+			<nav class="side-menu">
+				<ul class="main-menu">
+					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<span class="topbar-child1">
+							Free shipping for standard order over $100
+						</span>
+					</li>
+
+					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<div class="topbar-child2-mobile">
+							<span class="topbar-email">
+								fashe@example.com
+							</span>
+
+							<div class="topbar-language rs1-select2">
+								<select class="selection-1" name="time">
+									<option>USD</option>
+									<option>EUR</option>
+								</select>
+							</div>
+						</div>
+					</li>
+
+					<li class="item-topbar-mobile p-l-10">
+						<div class="topbar-social-mobile">
+							<a href="#" class="topbar-social-item fa fa-facebook"></a>
+							<a href="#" class="topbar-social-item fa fa-instagram"></a>
+							<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+							<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+							<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+						</div>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="/index"><b>BADMINTON</b></a>
+						
+						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="/totalitems">Brands</a>
+					</li>
+
+
+					<li class="item-menu-mobile">
+						<a href="/blog">SHOP</a>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="/about">BLOG</a>
+					</li>
+					<li class="item-menu-mobile">
+						<a href="/about">ABOUT</a>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="/contact">Contact</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<!-- //short-->
+	<br><br>
+	
+<div>
+	<h2 style="color: blue;text-align: center;">Register Your Item</h2>
+</div>
+<br><br><br>
+
+
+<div class="container">
+    <div class="single">  
+	   <div class="form-container">
+
+<!-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv -->
+<!-- <form name="index">
+	<select name="in" onchange="myFunction()">
+	<option>Select one</option>
+	<option >One</option>
+	<option >TWO</option>
+	</select>
+	<select id="select">
+		<option >Select One</option>
+	</select>
+</form> -->
+
+
+
+
+
+        <!-- <form id="vsform" onsubmit="return validateForm()" method="post" action="/s"> -->
+        <form method="post" action="/ab" enctype="multipart/form-data" name="index">
+ 
+
+
+	
+
+
+
+          <div class="row">
+            <div class="form-group col-md-12">
+            	
+                <label class="col-md-3 control-lable" for="firstName">Product Name</label>
+                <div class="col-md-9">
+                	<input type="text" id="form_fname" class="form-control input-sm" name="name" required="">
+                <!-- <span class="error_form" id="fname_error_message"></span> -->
+                    
+                </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable" for="lastName">Product Price</label>
+                <div class="col-md-9">
+				<input type="number" id="form_vfname" name="Price" class="form-control input-sm" required="">
+                <!-- <span class="error_form" id="sname_error_message"></span> -->
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+            	                <label class="col-md-3 control-lable" for="password">Product Brand</label>
+                <div class="col-md-9">
+                    <select path="brand" id="brand" class="form-control input-sm" name="probrand">
+                        <option value="None">None</option>
+                        <option value="Yonex">Yonex</option>
+                        <option value="Lining">Lining</option>
+                        <option value="Ashaway">Ashaway</option>
+                        <option value="Asics">Asics</option>
+                        <option value="Carlton">Carlton</option>
+                        <option value="Others">Others</option>
+
+                    </select>
+                <!-- <span class="error_form" id="password_error_message"></span> -->
+                </div>
+            </div>
+         </div>
+
+         <div class="row">
+            <div class="form-group col-md-12">
+            	<label class="col-md-3 control-lable" for="password">Product Type</label>
+                <div class="col-md-9">
+					 <!-- <select name="protype" onchange="subtypes()">
+						<option value="onee">onee</option>
+						<option >One</option>
+						<option >TWO</option>
+						</select>  -->
+                    <select id="brand" class="form-control input-sm"  name="protype" onchange="subtypes()">
+						<option value="NotDefined">Not Defined</option>
+                        <option value="Rackets">Rackets</option>
+                        <option value="Shoes">Shoes</option>
+                        <option value="Shuttle">Shuttle</option>
+                        <option value="Grips">Grip</option>
+                        <option value="Strings">String</option>
+                        <option value="Others">Others</option>
+
+                    </select>
+                <!-- <span class="error_form" id="password_error_message"></span> -->
+                </div>
+            </div>
+         </div>
+
+		 <div class="row">
+            <div class="form-group col-md-12">
+            	<label class="col-md-3 control-lable" for="password">Product SubType</label>
+                <div class="col-md-9">
+				
+                    <select path="brand" id="subtype" class="form-control input-sm" name="prosubtypes">
+						<option value="" disabled></option>
+					</select>
+                <!-- <span class="error_form" id="password_error_message"></span> -->
+                </div>
+            </div>
+         </div>
+
+
+         <div class="row">
+            <div class="form-group col-md-12">
+            	    <label class="col-md-3 control-lable" for="cpassword">Product Image</label>
+                <div class="col-md-9">
+                    <input type="file" accept=".jpg"  name="image" class="form-control input-sm" required="">                <span class="error_form" id="retype_password_error_message"></span>
+                </div>
+            </div>
+         </div>
+      
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3"></label>
+                    <div class="col-md-9">
+                        <input type="submit" value="Add" width="50rem" class="btn btn-primary btn-sm">
+                    </div> 
+                </div>
+            </div>
+           </form> 
+        </div>
+  
+    </div>
+ </div>
+</div>
+</div></div></div>
+
+
+
+
+
+
+
+
+
+<!-- Footer -->
+	<div style="background-image: url(images/a/footerback.jpg);"> 
+	<footer class=" p-t-45 p-b-43 p-l-45 p-r-45" >
+		<div class="flex-w p-b-90">
+			<div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
+				<h4 class="s-text12 p-b-30">
+					GET IN TOUCH
+				</h4>
+
+				<div>
+					<p class="s-text7 w-size27">
+						Any questions? Let us know in store at 8th floor, Jaipur, India, 302012 or call us on (+91) 90 7968 4513
+					</p>
+
+					<div class="flex-m p-t-30">
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+				<h4 class="s-text12 p-b-30">
+					Categories
+				</h4>
+
+				<ul>
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Rackets
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Shuttles
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Clothing
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Accessories
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+				<h4 class="s-text12 p-b-30">
+					Links
+				</h4>
+
+				<ul>
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Search
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							About Us
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Contact Us
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Returns
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+				<h4 class="s-text12 p-b-30">
+					Help
+				</h4>
+
+				<ul>
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Track Order
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Returns
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Shipping
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							FAQs
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="w-size8 p-t-30 p-l-15 p-r-15 respon3">
+				<h4 class="s-text12 p-b-30">
+					Newsletter
+				</h4>
+
+				<form>
+					<div class="effect1 w-size9">
+						<input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@example.com">
+						<span class="effect1-line"></span>
+					</div>
+
+					<div class="w-size2 p-t-20">
+						<!-- Button -->
+						<button class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
+							Subscribe
+						</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+		<div class="t-center p-l-15 p-r-15">
+			<a href="#">
+				<img class="h-size2" src="images/icons/paypal.png" alt="IMG-PAYPAL">
+			</a>
+
+			<a href="#">
+				<img class="h-size2" src="images/icons/visa.png" alt="IMG-VISA">
+			</a>
+
+			<a href="#">
+				<img class="h-size2" src="images/icons/mastercard.png" alt="IMG-MASTERCARD">
+			</a>
+
+			<a href="#">
+				<img class="h-size2" src="images/icons/express.png" alt="IMG-EXPRESS">
+			</a>
+
+			<a href="#">
+				<img class="h-size2" src="images/icons/discover.png" alt="IMG-DISCOVER">
+			</a>
+
+			<div class="t-center s-text8 p-t-20">
+				Copyright © 2022 All rights reserved. | My Badminton World  
+			</div>
+		</div>
+	</footer>
+
+</div>
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top bg0-hov" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
+	</div>
+
+	
+	<!-- Container Selection1 -->
+	<div id="dropDownSelect1"></div>
+
+
+
+<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
+	<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
+	
+<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/slick/slick.min.js"></script>
+	<script type="text/javascript" src="js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/lightbox2/js/lightbox.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
+	<script type="text/javascript">
+		$('.block2-btn-addcart').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+		$('.block2-btn-addwishlist').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+			});
+		});
+	</script>
+
+<!--===============================================================================================-->
+
+</body>
+</html>
